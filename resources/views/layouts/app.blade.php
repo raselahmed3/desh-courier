@@ -10,7 +10,7 @@
 
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
-
+    @livewireStyles
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
@@ -47,7 +47,7 @@
     <!--End Header Section-->
 
     {{$slot}}
-
+    @livewireScripts
 </body>
 
 </html>

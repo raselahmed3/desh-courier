@@ -38,19 +38,23 @@
                 <div class="dc-login-box px-16 py-20 bg-white shadow-xl shadow-gray-200">
                     <h3 class="mb-1">Welcome Back!</h3>
                     <p>Log in your account & Manage your system</p>
-                    <form action="" class="mt-12">
+                    <form  method="POST" action="{{ route('login') }}" class="mt-12">
+                        @csrf
                         <div class="border-b dc-header-broder-color flex items-center mb-4">
                             <div class="min-w-max mr-3">
                                 <img src="{{'assets/img/Iconly/Light'}}/profile.svg" alt="">
                             </div>
-                            <input placeholder="Email" class="w-full p-3 border-none focus:outline-none focus:border-none focus:ring-0" type="email">
+                            <input placeholder="Email" name="email" class="w-full p-3 border-none focus:outline-none focus:border-none focus:ring-0" type="email">
                         </div>
+                       @error('email')
+                        <p class="text-red-600">{{$message}}</p>
+                        @enderror
 
                         <div class="border-b dc-header-broder-color flex items-center mb-4">
                             <div class="min-w-max mr-3">
                                 <img src="{{'assets/img/Iconly/Light'}}/lock.svg" alt="">
                             </div>
-                            <input placeholder="Password" class="w-full p-3 border-none focus:outline-none focus:border-none focus:ring-0" type="password">
+                            <input placeholder="Password" name="password" class="w-full p-3 border-none focus:outline-none focus:border-none focus:ring-0" type="password">
                         </div>
                         <a class="text-gray-600 text-sm italic" href="#">Forget Password?</a>
                         <div class="flex justify-between items-center mt-14 mb-4">
@@ -60,7 +64,7 @@
                                 <div class="w-11 h-6 bg-gray-200 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
                             </label>
                         </div>
-                        <button class="dc-btn">Log In</button>
+                        <button type="submit" class="dc-btn">Log In</button>
                     </form>
                 </div>
             </div>
