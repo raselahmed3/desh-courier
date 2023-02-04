@@ -1,8 +1,17 @@
 <div>
     <form  wire:submit.prevent="search">
         <x-form-field name="search" type="text" label="Search Customer" placeholder="Search using eamil and phone Number" required="required" />
-        <x-submit-btn target="search">Add Shipments</x-submit-btn>
+        <x-submit-btn target="search">Search Customer</x-submit-btn>
     </form>
+   @if(!empty($customers) && $customers->count() > 0)
+        <x-form-field wire:change="setCustomer" class="w-full" name="selected_customer" type="select" label="Select Customer"  required="required">
+            @foreach($customers as $customer)
+                <option selected>Choose a customer</option>
+                <option value="{{$customer->id}}">{{$customer->name}}-{{$customer->email}}</option>
+            @endforeach
+        </x-form-field>
+    @endif
+    @if(!empty($selected_customer))
     <form class="mt-6" wire:submit.prevent="formSubmit">
         <x-form-field name="name" type="text" label="Add Customer Name " placeholder="Ratul Ahmed" required="required" />
         <x-form-field class="mt-8" name="email" type="text" label="Customer  Email  Address " placeholder="rahmed357@gmail.com" required="required" />
@@ -40,4 +49,5 @@
             <a href="{{route('shipment.index')}}" type="button" class="dc-cancel-button">Cancel</a>
         </div>
     </form>
+    @endif
 </div>
